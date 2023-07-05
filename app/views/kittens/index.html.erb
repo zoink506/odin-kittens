@@ -1,1 +1,9 @@
 <h1>KITTENS INDEX PAGE</h1>
+
+<ul>
+<% @kittens.each do |kitten| %>
+  <li>
+    <%= kitten.name %> <%= link_to "Show Details", kitten_path(kitten) %>
+  </li>
+<% end %>
+</ul>

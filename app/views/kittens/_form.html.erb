@@ -1,0 +1,33 @@
+<%= form_with model: kitten do |f| %>
+  <% if kitten.errors.any? %>
+    <div class="errors-section">
+      <% kitten.errors.full_messages.each do |err| %>
+        <div><%= err %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div>
+    <%= f.label :cuteness %>
+    <%= f.select :cuteness, select_options %>
+  </div>
+
+  <div>
+    <%= f.label :softness %>
+    <%= f.select :softness, select_options %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

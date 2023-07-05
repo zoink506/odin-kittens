@@ -1,1 +1,27 @@
 <h1>NEW KITTEN FORM</h1>
+
+<%= form_with model: @kitten do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div>
+    <%= f.label :cuteness %>
+    <%= f.select :cuteness, @cuteness_options %>
+  </div>
+
+  <div>
+    <%= f.label :softness %>
+    <%= f.select :softness, @softness_options %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

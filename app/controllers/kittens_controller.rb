@@ -8,6 +8,9 @@ class KittensController < ApplicationController
   end
 
   def new
+    @kitten = Kitten.new
+    @softness_options = [["soft", "soft"], ["medium", "medium"], ["not soft", "not soft"]]
+    @cuteness_options = [["cute", "cute"], ["medium", "medium"], ["ugly", "ugly"]]
   end
 
   def create

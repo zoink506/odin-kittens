@@ -9,11 +9,20 @@ class KittensController < ApplicationController
 
   def new
     @kitten = Kitten.new
-    @softness_options = [["soft", "soft"], ["medium", "medium"], ["not soft", "not soft"]]
-    @cuteness_options = [["cute", "cute"], ["medium", "medium"], ["ugly", "ugly"]]
+    @select_options = [["low", "low"], ["medium", "medium"], ["high", "high"]]
   end
 
   def create
+    @kitten = Kitten.new(kitten_params)
+
+    if @kitten.save
+      flash[:notice] = "Kitten created, thanks!"
+      redirect_to kitten_path(@kitten)
+    else
+      flash[:alert] = "Error creating kitten"
+      p @kitten.errors.full_messages
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -24,4 +33,10 @@ class KittensController < ApplicationController
 
   def destroy
   end
+
+  private
+
+    def kitten_params
+      params.require(:kitten).permit(:name, :age, :softness, :cuteness)
+    end
 end

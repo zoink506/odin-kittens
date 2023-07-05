@@ -1,6 +1,14 @@
 <h1>NEW KITTEN FORM</h1>
 
 <%= form_with model: @kitten do |f| %>
+  <% if @kitten.errors.any? %>
+    <div class="errors-section">
+      <% @kitten.errors.full_messages.each do |err| %>
+        <div><%= err %></div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -13,12 +21,12 @@
 
   <div>
     <%= f.label :cuteness %>
-    <%= f.select :cuteness, @cuteness_options %>
+    <%= f.select :cuteness, select_options %>
   </div>
 
   <div>
     <%= f.label :softness %>
-    <%= f.select :softness, @softness_options %>
+    <%= f.select :softness, select_options %>
   </div>
 
   <div>
